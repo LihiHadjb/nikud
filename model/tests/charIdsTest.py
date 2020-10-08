@@ -8,7 +8,6 @@ class CharIdsTest(unittest.TestCase):
         path = "test_charIdsConfig.xlsx"
         self.cid = CharIdsConfig(path)
 
-
     def testConversion(self):
         self.assertEqual(self.cid.get_letter_no_geresh_to_idx("ג"), 0)
         self.assertEqual(self.cid.get_letter_with_geresh_to_idx("ג"), 1)
@@ -39,6 +38,14 @@ class CharIdsTest(unittest.TestCase):
         self.assertFalse(self.cid.is_nikud("ֳ"))
         self.assertFalse(self.cid.is_nikud("ג"))
         self.assertFalse(self.cid.is_nikud("'"))
+
+    def testDoubleNikud(self):
+        self.assertEqual(self.cid.get_nikud_to_idx("ֱּ"), 2)
+        self.assertTrue(self.cid.is_nikud("ֱּ"))
+        self.assertEqual(self.cid.get_nikud_to_idx("ֱּ"), self.cid.get_nikud_to_idx("ֱּ"))
+        self.assertEqual(self.cid.get_idx_to_nikud(2), "ֱּ")
+
+
 
 
 

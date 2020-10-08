@@ -1,0 +1,136 @@
+/*
+Theme Name: Lingolearn
+Theme URI: https://wordpress.org/themes/twentyseventeen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Lingolearn
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: Lingolearn
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Normalize
+2.0 Accessibility
+3.0 Alignments
+4.0 Clearings
+5.0 Typography
+6.0 Forms
+7.0 Formatting
+8.0 Lists
+9.0 Tables
+10.0 Links
+11.0 Featured Image Hover
+12.0 Navigation
+13.0 Layout
+   13.1 Header
+   13.2 Front Page
+   13.3 Regular Content
+   13.4 Posts
+   13.5 Pages
+   13.6 Footer
+14.0 Comments
+15.0 Widgets
+16.0 Media
+   16.1 Galleries
+17.0 Customizer
+18.0 SVGs Fallbacks
+19.0 Media Queries
+20.0 Print
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 Normalize
+Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
+--------------------------------------------------------------*/
+
+
+div.wpcf7 { direction:rtl; }
+div.wpcf7-validation-errors, div.wpcf7-acceptance-missing, div.wpcf7-mail-sent-ng, div.wpcf7-aborted, div.wpcf7-spam-blocked { border:none; color:#ff0000; font-weight:bold; margin: 1em 0; padding: 0; }
+span.wpcf7-not-valid-tip { font-size:13px; }
+.srch_text{
+	width:100%;
+	float:left;
+}
+.srch_text button{
+	float:left; width:10%;
+	border-radius:0px;
+	background:none;
+	border:1px solid #ccc;
+}
+
+.srch_text input{
+	float:right; width:90%;
+	border-radius:0px;
+}
+
+.searchResult{
+	float:right;
+	text-align:right;
+	width:100%;
+	display:none;
+}
+
+.selectBox{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+
+.searchFor{
+	float:right;
+	margin:5px 0px;
+}
+
+li.active a,li.current-menu-parent a{ padding:0; color:#fff !important; text-transform: uppercase; border-bottom:2px solid #FFF !important;}
+.middle-content article .thumb img { width:107px; height:134px; }
+.dropdown-menu ul li.active .dropdown-item{ background:#515151;}
+.middle-content ul { padding-right:30px; }
+.middle-content ul.slides { padding-right:0; }
+.middle-content ol { width: 100%; display: block; padding-right:30px; }
+.middle-content ol li { width: 100%; font-family: Arial, sans-serif; font-size: 10pt; }
+
+.fbc-page .fbc-wrap .fbc-items li i { margin-right:11px; }
+
+/*.flexslider .slides img {
+    max-height: 320px;
+}*/
+
+div.wpcf7-mail-sent-ok { border:none; color: #398f14; font-weight:bold; }
+
+.left-side .wpcf7 .wpcf7-form .requiredmsg{ font-size: 12px; margin-left: auto;margin-right: auto;text-align: center;direction: ltr; }
+
+input.referer-page { display:none; }
+
+.inv-recaptcha-holder {
+    display: none;
+}
+
+.jcetooltip {
+	text-decoration: underline;
+}
+.mlw_answer_open_text {
+    max-width: -webkit-fill-available;
+}
+/*
+.cf7sr-g-recaptcha { width: 90px; }
+
+.mini_cap { width: 90px; }
+
+
+@media screen and (max-height: 575px){
+#rc-imageselect, .cf7sr-g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
+}
+*/
+
+/* Fix for QSM Previous button display error */
+.qsm-previous {
+	display: none !important;
+}

@@ -1,0 +1,4 @@
+jQuery(function(){
+	jQuery('form input[name="Url"]').val(document.location.href);
+	jQuery('form input[name="QueryString"]').val(document.location.search.substr(1));
+});
