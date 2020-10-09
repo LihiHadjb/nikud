@@ -1,4 +1,5 @@
 import pandas as pd
+import math
 
 SEPARATOR = ''
 
@@ -18,7 +19,8 @@ class CharIdsConfig:
     def dict_from_excel(self, xls_path, col):
         xls = pd.ExcelFile(xls_path)
         df = xls.parse()
-        idx_to_char = df.to_dict()[col]
+        col_df = df[col].dropna()
+        idx_to_char = col_df.to_dict()
         char_to_idx = {v: k for k, v in idx_to_char.items()}
         return idx_to_char, char_to_idx
 
@@ -57,4 +59,10 @@ class CharIdsConfig:
 
     def get_no_nikud_idx(self):
         return self.nikud_to_idx[self.NO_NIKUD]
+
+    def get_num_letters(self):
+        return len(self.letter_to_idx.keys())
+
+    def get_num_nikuds(self):
+        return len(self.nikud_to_idx.keys())
 

@@ -8,6 +8,10 @@ class CharIdsTest(unittest.TestCase):
         path = "test_charIdsConfig.xlsx"
         self.cid = CharIdsConfig(path)
 
+    def testBasic(self):
+        self.assertEqual(self.cid.get_num_nikuds(), 5)
+        self.assertEqual(self.cid.get_num_letters(), 3)
+
     def testConversion(self):
         self.assertEqual(self.cid.get_letter_no_geresh_to_idx("ג"), 0)
         self.assertEqual(self.cid.get_letter_with_geresh_to_idx("ג"), 1)
