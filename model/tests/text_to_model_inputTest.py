@@ -36,6 +36,7 @@ class Word2modelInputTest(unittest.TestCase):
         self.doTestWord("גגֱגֱ", [0, 0, 0], [4, 0, 0])
         self.doTestWord("גֱגֱג", [0, 0, 0], [0, 0, 4])
 
+
 class Text2modelInputTest(unittest.TestCase):
 
     def setUp(self):
