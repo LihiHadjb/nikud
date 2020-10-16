@@ -61,5 +61,9 @@ input{
   box-sizing: border-box;
 }
 
+textarea {
+resize: none;
+}
+
 
 
