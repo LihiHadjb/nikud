@@ -1,4 +1,4 @@
-from model.text_to_model_input import TextToModelInput
+from model.sentence_to_model_input import SentenceToModelInput
 import unittest
 from pathlib import Path
 
@@ -6,8 +6,8 @@ from pathlib import Path
 class Word2modelInputTest(unittest.TestCase):
 
     def setUp(self):
-        path = "test_charIdsConfig.xlsx"
-        self.text2model = TextToModelInput(path)
+        path = "resources/test_charIdsConfig.xlsx"
+        self.text2model = SentenceToModelInput(path)
 
     def doTestWord(self, word, expected_input, expected_labels):
         actual_input, actual_labels = self.text2model.word_to_input_and_labels(word)
@@ -37,26 +37,24 @@ class Word2modelInputTest(unittest.TestCase):
         self.doTestWord("גֱגֱג", [0, 0, 0], [0, 0, 4])
 
 
-class Text2modelInputTest(unittest.TestCase):
+class Sentence2modelInputTest(unittest.TestCase):
 
     def setUp(self):
-        config_path = "..\letters.xlsx"
-        self.text2model = TextToModelInput(config_path)
+        config_path = "resources\letters.xlsx"
+        self.text2model = SentenceToModelInput(config_path)
 
     def testText2InputBasic(self):
-        txt_path = "textToInputBasic.txt"
+        txt_path = "resources/textToInputBasic.txt"
         txt = Path(txt_path).read_text()
-        inputs, labels = self.text2model.text_to_input_and_labels(txt)
+        inputs, labels = self.text2model.sentence_to_input_and_labels(txt)
 
-        print(inputs[-5:])
-        print(labels[-5:])
         self.assertEqual(len(labels), len(inputs))
 
-        self.assertEqual(inputs[:6], [20, 10, 30, 32, ' ', 30])
-        self.assertEqual(labels[:6], [8, 8, 0, 25, 25, 8])
+        self.assertEqual([20, 10, 30, 32, ' ', 30], inputs[:6])
+        self.assertEqual([8, 8, 0, 25, 25, 8], labels[:6])
 
-        self.assertEqual(inputs[-4:], [14, 20, 29, ' '])
-        self.assertEqual(labels[-4:], [0, 5, 25, 25])
+        self.assertEqual([14, 20, 29], inputs[-3:])
+        self.assertEqual([0, 5, 25], labels[-3:])
 
 
 

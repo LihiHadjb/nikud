@@ -1,7 +1,7 @@
 from model.chunk_to_input_label import ChunkToInputLabel
 
 
-class TextToModelInput:
+class SentenceToModelInput:
     def __init__(self, config_path):
         self.chunk_processor = ChunkToInputLabel(config_path)
 
@@ -30,17 +30,18 @@ class TextToModelInput:
             labels.append(label)
         return inputs, labels
 
-    def text_to_input_and_labels(self, text):
+    def sentence_to_input_and_labels(self, sentence):
         inputs = []
         labels = []
-        for word in text.split():
+        for word in sentence.split():
             word_inputs, word_labels = self.word_to_input_and_labels(word)
             inputs.extend(word_inputs)
             labels.extend(word_labels)
             sep, sep_label = self.chunk_processor.get_sep_chunk()
             inputs.append(sep)
             labels.append(sep_label)
-            #inputs.append(SPACE)
-            #labels.append(self.cid.get_no_nikud_idx())
-        return inputs, labels
 
+        #remove the last space
+        inputs = inputs[:-1]
+        labels = labels[:-1]
+        return inputs, labels

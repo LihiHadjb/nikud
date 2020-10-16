@@ -5,7 +5,7 @@ import unittest
 class CharIdsTest(unittest.TestCase):
 
     def setUp(self):
-        path = "test_charIdsConfig.xlsx"
+        path = "resources/test_charIdsConfig.xlsx"
         self.cid = CharIdsConfig(path)
 
     def testBasic(self):
