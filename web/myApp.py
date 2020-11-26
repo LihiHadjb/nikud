@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from web.forms import InputText
-from model.useModel import get_prediction_text
+from model.useModel import get_prediction_for_text
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -15,7 +15,7 @@ def home():
     if request.method == "POST":
         input_text = request.form['input']
         input_form.input.data = input_text
-        output_text = get_prediction_text(input_text)
+        output_text = get_prediction_for_text(input_text)
     return render_template('home.html', form=input_form, output=output_text)
 
 

@@ -15,6 +15,7 @@ class CharIdsConfig:
         self.nikud_to_idx = nikud_to_idx
         self.GERESH = '\''
         self.NO_NIKUD = "NONE"
+        self.idx_to_has_geresh = {i: len(letter)==2 for i,letter in enumerate(letter_to_idx.keys())}
 
     def dict_from_excel(self, xls_path, col):
         xls = pd.ExcelFile(xls_path)
@@ -65,4 +66,7 @@ class CharIdsConfig:
 
     def get_num_nikuds(self):
         return len(self.nikud_to_idx.keys())
+
+    def get_idx_to_has_geresh(self, idx):
+        return self.idx_to_has_geresh[idx]
 

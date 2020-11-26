@@ -1,16 +1,17 @@
 from model.sentence_to_model_input import SentenceToModelInput
 import unittest
 from pathlib import Path
+from model.decoding.model_to_text import ModelInputToSentence
 
 
 class Word2modelInputTest(unittest.TestCase):
 
     def setUp(self):
         path = "resources/test_charIdsConfig.xlsx"
-        self.text2model = SentenceToModelInput(path)
+        self.sentence2model = SentenceToModelInput(path)
 
     def doTestWord(self, word, expected_input, expected_labels):
-        actual_input, actual_labels = self.text2model.word_to_input_and_labels(word)
+        actual_input, actual_labels = self.sentence2model.word_to_input_and_labels(word)
         self.assertEqual(expected_input, actual_input)
         self.assertEqual(expected_labels, actual_labels)
 
@@ -41,12 +42,13 @@ class Sentence2modelInputTest(unittest.TestCase):
 
     def setUp(self):
         config_path = "resources\letters.xlsx"
-        self.text2model = SentenceToModelInput(config_path)
+        self.sentence2model = SentenceToModelInput(config_path)
+        self.model2sentence = ModelInputToSentence(config_path)
 
     def testText2InputBasic(self):
         txt_path = "resources/textToInputBasic.txt"
         txt = Path(txt_path).read_text()
-        inputs, labels = self.text2model.sentence_to_input_and_labels(txt)
+        inputs, labels = self.sentence2model.sentence_to_input_and_labels(txt)
 
         self.assertEqual(len(labels), len(inputs))
 
@@ -55,6 +57,17 @@ class Sentence2modelInputTest(unittest.TestCase):
 
         self.assertEqual([14, 20, 29], inputs[-3:])
         self.assertEqual([0, 5, 25], labels[-3:])
+
+#TODO
+    def testEncodeDecode(self):
+        sent = "לוָצָפָאת אִלִי סָאוָיְתִהָא בִּהָדָא אָלְ- video טָעְמָהָא רָהִיבּ וָכְּתִ'יר סָהְלֵה. וָאָיְ וָאחִד מֻמְכִּן יִסָאוִיהָא בִּאלְבֵּית"
+        inputs, labels = self.sentence2model.sentence_to_input_and_labels(sent)
+        print(inputs)
+        print("___________________________")
+        print(labels)
+        decoded = self.model2sentence.input_and_labels_to_sentence(inputs, labels)
+        self.assertEqual(sent, decoded)
+        print("passssssssss")
 
 
 
