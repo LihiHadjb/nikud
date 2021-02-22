@@ -1,4 +1,4 @@
-from model.charIds import CharIdsConfig
+from model.encoding.charIds import CharIdsConfig
 
 
 class ModelInputToSentence:

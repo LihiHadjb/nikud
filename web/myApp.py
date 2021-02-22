@@ -1,6 +1,6 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, request
 from web.forms import InputText
-from model.useModel import get_prediction_for_text
+from model.lstm.useModel import get_prediction_for_text
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
