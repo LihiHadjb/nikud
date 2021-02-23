@@ -1,11 +1,16 @@
 import unittest
 from model.encoding.chunk_to_input_label import ChunkToInputLabel
 
+from model.CharIdsSingleton import CharIdsSingleton
 
 class Chunk2InputLabelTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        path = "../resources/test_charIdsConfig.xlsx"
+        CharIdsSingleton(path)
+
     def setUp(self):
-        config_path = "../resources/test_charIdsConfig.xlsx"
-        self.chunk2inputLabel = ChunkToInputLabel(config_path)
+        self.chunk2inputLabel = ChunkToInputLabel()
 
     def testIsvalidChunk(self):
         valid_chunk = "גֱ'"

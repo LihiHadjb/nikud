@@ -1,12 +1,16 @@
-from model.encoding.charIds import CharIdsConfig
+from model.CharIdsSingleton import CharIdsSingleton
 import unittest
 
 
-class CharIdsTest(unittest.TestCase):
+class CharIdsSingletonTest(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        path = "../resources/test_charIdsConfig.xlsx"
+        CharIdsSingleton(path)
 
     def setUp(self):
-        path = "../resources/test_charIdsConfig.xlsx"
-        self.cid = CharIdsConfig(path)
+        self.cid = CharIdsSingleton.get_instance()
 
     def testBasic(self):
         self.assertEqual(self.cid.get_num_nikuds(), 5)

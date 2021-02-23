@@ -1,6 +1,5 @@
 import torch
 from model.resources.default_locations import DEFAULT_MODEL_PATH
-from model.resources.default_locations import DEFAULT_CONFIG_PATH
 from model.encoding.process_text import TextProcessor
 from model.decoding.model_to_text import ModelInputToSentence
 
@@ -15,9 +14,8 @@ def predict(inputs, model_path=DEFAULT_MODEL_PATH):
 
 
 def get_prediction_for_text(text):
-    #TODO file name should not be hard-coded!
-    text_processor = TextProcessor(DEFAULT_CONFIG_PATH)
-    model2text = ModelInputToSentence(DEFAULT_CONFIG_PATH)
+    text_processor = TextProcessor()
+    model2text = ModelInputToSentence()
 
     result = ""
     all_inputs, _ = text_processor.prepare_text(text)

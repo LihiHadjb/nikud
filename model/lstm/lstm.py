@@ -7,9 +7,9 @@ from model.encoding.sentence_to_model_input import SentenceToModelInput
 
 class LSTMTagger(nn.Module):
 
-    def __init__(self, embedding_dim, hidden_dim, config_path, bidirectional):
+    def __init__(self, embedding_dim, hidden_dim, bidirectional):
         super(LSTMTagger, self).__init__()
-        self.text2input = SentenceToModelInput(config_path)
+        self.text2input = SentenceToModelInput()
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
 

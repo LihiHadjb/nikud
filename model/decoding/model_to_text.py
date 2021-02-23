@@ -1,9 +1,9 @@
-from model.encoding.charIds import CharIdsConfig
+from model.CharIdsSingleton import CharIdsSingleton
 
 
 class ModelInputToSentence:
-    def __init__(self, config_path):
-        self.cid = CharIdsConfig(config_path)
+    def __init__(self):
+        self.cid = CharIdsSingleton.get_instance()
 
     def chunk_from_input_label(self, input_idx, label_idx):
         label_char = self.cid.get_idx_to_nikud(label_idx)
@@ -18,13 +18,10 @@ class ModelInputToSentence:
             else:
                 result = input_char
 
-
         except KeyError:
             input_char = input_idx
             result = input_char
         return result
-
-
 
     def input_and_labels_to_sentence(self, inputs, labels):
         result = ""

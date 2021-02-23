@@ -1,10 +1,10 @@
-from model.encoding.charIds import CharIdsConfig
+from model.CharIdsSingleton import CharIdsSingleton
 
 
 
 class ChunkToInputLabel:
-    def __init__(self, config_path):
-        self.cid = CharIdsConfig(config_path)
+    def __init__(self):
+        self.cid = CharIdsSingleton.get_instance()
 
     def get_num_letters(self):
         return self.cid.get_num_letters()
@@ -12,12 +12,7 @@ class ChunkToInputLabel:
     def get_num_nikuds(self):
         return self.cid.get_num_nikuds()
 
-    def find_letter_indices_in_word(self, word):
-        result = []
-        for i, letter in enumerate(word):
-            if self.cid.is_alphabet(letter):
-                result.append(i)
-        return result
+
 
     def get_nikud_in_chunk(self, chunk):
         result = ""

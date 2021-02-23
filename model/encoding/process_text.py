@@ -4,8 +4,8 @@ import torch
 
 
 class TextProcessor():
-    def __init__(self, config_path):
-        self.sentence_processor = SentenceToModelInput(config_path)
+    def __init__(self):
+        self.sentence_processor = SentenceToModelInput()
 
     def prepare_text(self, text):
         #split_by = ['.', ',', ')', '(']

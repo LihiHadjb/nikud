@@ -1,4 +1,4 @@
-from model.encoding.charIds import CharIdsConfig
+from model.CharIdsSingleton import CharIdsSingleton
 from model.encoding.chunk_to_input_label import ChunkToInputLabel
 import docx
 import os
@@ -6,9 +6,9 @@ from pathlib import Path
 
 class ExtractArabicFromFiles:
 
-    def __init__(self, config_path):
-        self.cid = CharIdsConfig(config_path)
-        self.cp = ChunkToInputLabel(config_path);
+    def __init__(self):
+        self.cid = CharIdsSingleton.get_instance()
+        self.cp = ChunkToInputLabel();
 
     def isArabicInHebrewLetters(self, word):
         ##TODO: replace with a word iterator
