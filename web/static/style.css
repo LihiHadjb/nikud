@@ -1,69 +1,73 @@
-html {
-  font-size: 10px;
-  font-family: 'Open Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=David+Libre&family=Suez+One&display=swap');
+
+body{
+  margin: 15px 0;
 }
-
-
-h1 {
-  font-size: 60px;
-  text-align: center;
-}
-
-p, li {
-  font-size: 16px;
-  line-height: 2;
-  letter-spacing: 1px;
-  padding: 15px 32px;
-  text-align: center;
-}
-
 
 html {
-  background-color: #00539F;
+  background-color: slategray;
+  font-family: 'Suez One', serif;
+
 }
 
-body {
-  width: 600px;
-  margin: 0 auto;
-  background-color: #FF9500;
-  padding: 0 20px 20px 20px;
-  border: 5px solid black;
-}
+input, button{
+  width:70%;
+  padding:20px 20px;
+  height: 4px;
+  vertical-align: center;
+  font-family: 'Suez One', serif;
 
-h1 {
-  margin: 0;
-  padding: 20px 0;
-  color: #00539F;
-  text-shadow: 3px 3px 1px black;
-}
-
-img {
-  display: block;
-  margin: 0 auto;
-}
-
-button {
-  border: none;
-  color: Black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-input{
-  width:100%;
-  padding:30px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
 }
 
 textarea {
-resize: none;
+  width:70%;
+  resize: none;
+  background-color: darkseagreen;
+  height: 200px;
+  text-align: right;
+  font-family: 'David Libre', serif;
 }
 
+/* Add a black background color to the top navigation */
+.topnav {
+  position: relative;
+  background-color: darkslategrey;
+  overflow: hidden;
+}
 
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Centered section inside the top navigation */
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}

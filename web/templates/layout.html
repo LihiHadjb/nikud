@@ -1,22 +1,28 @@
-<!DOCTYPE html>
-<html dir="rtl">
+<!doctype html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <title>נקדלי</title>
-
-      <style>
-    textarea {
-        resize: none;
-    }
-    </style>
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ניקוד</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
   </head>
 
-    <div class="col-md-8">
-      {% block content %}{% endblock %}
+  <body>
+    <div class="topnav">
+
+      <div class="topnav-centered">
+        <a href="#home" class="active">עמוד הבית</a>
+      </div>
+
+      <a href="#contact">צור קשר</a>
+      </div>
+
     </div>
+
+    {% block content %}{% endblock %}
+
+  </body>
+
+
 
 </html>

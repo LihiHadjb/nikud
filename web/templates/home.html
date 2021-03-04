@@ -1,24 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>ברוכים הבאים!</h1>
 
-        <form action="" method="POST">
-          {{form.hidden_tag()}}
-          {{form.csrf}}
-            <textarea class="form-control" name="input" id="input" rows="10" cols="82">{{form.input.data}}</textarea>
-            <input type="submit" value="נקד לי">
-        </form>
+    <form action="" method="POST" align="center">
+      {{form.hidden_tag()}}
+      {{form.csrf}}
+        <textarea class="form-control" name="input" id="input" rows="10" cols="82">{{form.input.data}}</textarea>
+        <input type="submit" value="נקד לי">
+        <textarea id="output" rows="10" cols="82" readonly="readonly" align="center">{{output}}</textarea>
+        <button onclick="copyToClipboard();">העתק</button>
+    </form>
 
-      <textarea id="output" rows="10" cols="82" readonly="readonly">{{output}}</textarea>
 
-      <button onclick="copyToClipboard();">העתק</button>
 
-      <Script>
+    <Script>
         function copyToClipboard() {
           var textBox = document.getElementById("output");
           textBox.select();
           document.execCommand("copy");
         }
-      </Script>
+    </Script>
+
 {% endblock content %}
 
