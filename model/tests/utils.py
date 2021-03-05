@@ -1,6 +1,6 @@
 import ast
 from model.resources.default_locations import DEFAULT_CONFIG_PATH
-from model.encoding.charIds import CharIdsConfig
+from model.CharIdsSingleton import CharIdsSingleton
 
 def list2file(l, file_name):
     with open(file_name, 'w') as filehandle:
@@ -25,7 +25,7 @@ def remove_nikud(text):
 #     # result = model2text.input_and_labels_to_sentence(inputs, empty_labels)
 #     # return result
 
-    cid = CharIdsConfig(DEFAULT_CONFIG_PATH)
+    cid = CharIdsSingleton.get_instance()
     result = ""
     for c in text:
         if not cid.is_nikud(c):

@@ -4,6 +4,7 @@ from model.lstm.lstm import LSTMTagger
 import torch.nn as nn
 import torch.optim as optim
 
+
 def do_train(training_inputs, training_labels):
     embedding_dim = 50
     hidden_dim = 50
@@ -14,6 +15,7 @@ def do_train(training_inputs, training_labels):
     #training_data = [(torch.tensor([20, 10, 30, 32], dtype=torch.long), torch.tensor([8, 8, 0, 25], dtype=torch.long))]
     loss_function = nn.NLLLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.1)
+    model.train()
 
     for epoch in range(num_epochs):
         for sentence, tags in zip(training_inputs, training_labels):
@@ -26,3 +28,5 @@ def do_train(training_inputs, training_labels):
             optimizer.step()
             print("Loss at epoch %d: %.3f" % (epoch, loss.item()))
     torch.save(model, DEFAULT_MODEL_PATH)
+
+

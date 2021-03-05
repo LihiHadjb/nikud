@@ -15,8 +15,8 @@ def home():
     if request.method == "POST":
         input_text = request.form['input']
         input_form.input.data = input_text
-        #output_text = get_prediction_for_text(input_text)
-        output_text = "וָאָיְ וָאחִד מֻמְכִּן יִסָאוִיהָא בִּאלְבֵּית"
+        output_text = get_prediction_for_text(input_text)
+        #output_text = "וָאָיְ וָאחִד מֻמְכִּן יִסָאוִיהָא בִּאלְבֵּית"
     return render_template('home.html', form=input_form, output=output_text)
 
 

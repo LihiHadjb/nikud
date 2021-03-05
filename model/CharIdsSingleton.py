@@ -13,9 +13,9 @@ class CharIdsSingleton:
         return CharIdsSingleton.__instance
 
     def __init__(self, path):
-        if CharIdsSingleton.__instance is not None:
-            raise Exception("This class is a singleton!")
-        else:
+        # if CharIdsSingleton.__instance != None:
+        #     raise Exception("This class is a singleton!")
+        # else:
             CharIdsSingleton.__instance = self
             idx_to_letter, letter_to_idx = self.dict_from_excel(path, "letters")
             idx_to_nikud, nikud_to_idx = self.dict_from_excel(path, "nikud")

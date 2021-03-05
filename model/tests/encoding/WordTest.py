@@ -1,6 +1,8 @@
 import unittest
 from model.CharIdsSingleton import CharIdsSingleton
 from model.encoding.Word import Word
+from model.encoding.sentence_to_model_input import SentenceToModelInput
+
 
 
 class WordTest(unittest.TestCase):
@@ -12,6 +14,8 @@ class WordTest(unittest.TestCase):
 
     def setUp(self):
         self.cid = CharIdsSingleton.get_instance()
+        self.sentence2model = SentenceToModelInput()
+
 
     def doTestWord(self, word, expected_chunks):
         actual_chunks = []
@@ -38,3 +42,33 @@ class WordTest(unittest.TestCase):
         self.doTestWord("גגֱגֱ", ["ג", "גֱ", "גֱ"])
         self.doTestWord("גֱגֱג", ["גֱ", "גֱ", "ג"])
 
+
+
+
+
+    def doTestWordToInputsLabels(self, word, expected_input, expected_labels):
+        actual_input, actual_labels = self.sentence2model.word_to_input_and_labels(word)
+        self.assertEqual(expected_input, actual_input)
+        self.assertEqual(expected_labels, actual_labels)
+
+    def testSimpleWordToInputsLabels(self):
+        self.doTestWordToInputsLabels("גֱדֱדֲ", [0, 2, 2], [0, 0, 1])
+
+    def testWordWithGereshToInputsLabels(self):
+        self.doTestWordToInputsLabels("גֱגֱ'דֱ", [0, 1, 2], [0, 0, 0])
+        self.doTestWordToInputsLabels("גֱ'גֱגֱ", [1, 0, 0], [0, 0, 0])
+        self.doTestWordToInputsLabels("דֱגֱגֱ'", [2, 0, 1], [0, 0, 0])
+
+    def testWordWithTwoNikudToInputsLabels(self):
+        self.doTestWordToInputsLabels("ג'ֱג'ֱג'ֱ", [1, 1, 1], [0, 0, 0])
+        self.doTestWordToInputsLabels("גֱּגֱגֱ", [0, 0, 0], [2, 0, 0])
+        self.doTestWordToInputsLabels("גֱגֱגֱּ", [0, 0, 0], [0, 0, 2])
+
+    def testWordWithTwoNikudAndGereshToInputsLabels(self):
+        self.doTestWordToInputsLabels("גֱּ'גֱגֱ", [1, 0, 0], [2, 0, 0])
+        self.doTestWordToInputsLabels("גֱגֱגֱּ'", [0, 0, 1], [0, 0, 2])
+
+    def testWordNoNikudToInputsLabels(self):
+        self.doTestWordToInputsLabels("גֱגגֱ", [0, 0, 0], [0, 4, 0])
+        self.doTestWordToInputsLabels("גגֱגֱ", [0, 0, 0], [4, 0, 0])
+        self.doTestWordToInputsLabels("גֱגֱג", [0, 0, 0], [0, 0, 4])

@@ -7,7 +7,7 @@ class SentenceToModelInput:
         self.chunk_processor = ChunkToInputLabel()
 
     def get_num_letters(self):
-        return self.chunk_processor.get_num_letters()
+        return self.chunk_processor.get_num_letters() + 1
 
     def get_num_nikuds(self):
         return self.chunk_processor.get_num_nikuds()
@@ -27,7 +27,7 @@ class SentenceToModelInput:
         inputs = []
         labels = []
         for word in sentence.split():
-            word_inputs, word_labels = Word(word).word_to_input_and_labels()
+            word_inputs, word_labels = self.word_to_input_and_labels(word)
             inputs.extend(word_inputs)
             labels.extend(word_labels)
             sep, sep_label = self.chunk_processor.get_sep_chunk()

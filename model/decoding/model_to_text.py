@@ -6,6 +6,11 @@ class ModelInputToSentence:
         self.cid = CharIdsSingleton.get_instance()
 
     def chunk_from_input_label(self, input_idx, label_idx):
+
+        #TODO: make this normal!
+        if input_idx == 33:
+            return " "
+
         label_char = self.cid.get_idx_to_nikud(label_idx)
 
         try:
@@ -25,6 +30,8 @@ class ModelInputToSentence:
 
     def input_and_labels_to_sentence(self, inputs, labels):
         result = ""
+        inputs = inputs.tolist()
+        labels = labels.tolist()
         for input_idx, label_idx in zip(inputs, labels):
             chunk = self.chunk_from_input_label(input_idx, label_idx)
             result += chunk

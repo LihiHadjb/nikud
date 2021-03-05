@@ -1,7 +1,7 @@
 from model.CharIdsSingleton import CharIdsSingleton
 import unittest
 
-
+#TODO: remove the word Singleton
 class CharIdsSingletonTest(unittest.TestCase):
 
     @classmethod

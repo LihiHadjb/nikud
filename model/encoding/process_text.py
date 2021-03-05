@@ -1,6 +1,7 @@
 from model.encoding.sentence_to_model_input import SentenceToModelInput
 import re
 import torch
+from pathlib import Path
 
 
 class TextProcessor():
@@ -14,6 +15,7 @@ class TextProcessor():
         all_labels = []
 
         #TODO: these should come from the config file
+        #consider spliting by illegal chars
         split_by = ['.', ',', '\n', '(', ')']
         pattern = '|'.join(map(re.escape, split_by))
         raw_sentences = re.split(pattern, text)
@@ -25,9 +27,18 @@ class TextProcessor():
 
         return all_inputs, all_labels
 
+
+    def clean_illegal_chars(self, text):
+        result = ""
+        for c in text:
+            if c != '\n':
+                result += c
+        return result
+
+
     def prepare_file(self, path):
-        with open(path, 'r') as file:
-            text = file.read()
+        text = Path(path).read_text()
+        text = self.clean_illegal_chars(text)
         return self.prepare_text(text)
 
 

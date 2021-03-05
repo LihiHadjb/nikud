@@ -1,7 +1,7 @@
 import unittest
 from model.encoding.chunk_to_input_label import ChunkToInputLabel
-
 from model.CharIdsSingleton import CharIdsSingleton
+
 
 class Chunk2InputLabelTest(unittest.TestCase):
     @classmethod
