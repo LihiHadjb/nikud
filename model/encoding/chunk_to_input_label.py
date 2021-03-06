@@ -35,7 +35,6 @@ class ChunkToInputLabel:
 
     def chunk_to_input_label(self, chunk):
         letter_ch = chunk[0]
-
         if self.has_geresh(chunk):
             letter_idx = self.cid.get_letter_with_geresh_to_idx(letter_ch)
         else:

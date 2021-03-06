@@ -8,7 +8,6 @@ class InputText(FlaskForm):
     submit = SubmitField()
 
 
-#TODO: put the label to the right of the field
 class ContactForm(FlaskForm):
     type = SelectField(
         'סוג הפנייה',

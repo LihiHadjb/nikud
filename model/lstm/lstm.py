@@ -22,6 +22,7 @@ class LSTMTagger(nn.Module):
 
     def forward(self, sentence):
         embeds = self.letter_embeddings(sentence)
+        t = embeds.view(len(sentence), 1, -1)
         lstm_out, _ = self.lstm(embeds.view(len(sentence), 1, -1))
         tag_space = self.hidden2tag(lstm_out.view(len(sentence), -1))
         tag_scores = F.log_softmax(tag_space, dim=1)

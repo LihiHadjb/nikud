@@ -34,7 +34,7 @@ class Sentence2modelInputTest(unittest.TestCase):
     def testEncodeDecode(self):
         sent = "וָאָיְ וָאחִד מֻמְכִּן יִסָאוִיהָא בִּאלְבֵּית"
         inputs, labels = self.sentence2model.sentence_to_input_and_labels(sent)
-        decoded = self.model2sentence.input_and_labels_to_sentence(torch.tensor(inputs), torch.tensor(labels))
+        decoded = self.model2sentence.input_and_labels_to_sentence(torch.tensor(inputs, dtype=torch.long), torch.tensor(labels, dtype=torch.long))
         self.assertEqual(sent, decoded)
 
 

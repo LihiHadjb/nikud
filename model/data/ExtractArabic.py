@@ -1,5 +1,6 @@
 from model.CharIdsSingleton import CharIdsSingleton
 from model.encoding.chunk_to_input_label import ChunkToInputLabel
+from model.encoding.Word import Word
 import docx
 import os
 from pathlib import Path
@@ -12,7 +13,7 @@ class ExtractArabicFromFiles:
 
     def isArabicInHebrewLetters(self, word):
         ##TODO: replace with a word iterator
-        letter_indices = self.cp.find_letter_indices_in_word(word);
+        letter_indices = Word(word).find_letter_indices_in_word();
         for j in range(len(letter_indices)):
             start_idx = letter_indices[j]
             end_idx = letter_indices[j+1] if j != len(letter_indices)-1 else len(word)
@@ -46,7 +47,7 @@ class ExtractArabicFromFiles:
 
     def collect_from_file(self, path):
         file_name = Path(path).stem
-        new_file_path = "C:/nikud/model/data/transcipts/" + file_name + "_arabic.txt"
+        new_file_path = "C:/nikud/model/data/transcipts/" + file_name + "_arabic.docx"
         new_file = open(new_file_path, "w", encoding="utf8")
         text = self.get_text(path)
         for word in text.split():
@@ -61,6 +62,8 @@ class ExtractArabicFromFiles:
             self.collect_from_file(dir_path + "/" + filename)
 
 
+
 path = "../resources/config.xlsx"
-abuGal = ExtractArabicFromFiles(path)
-abuGal.collect_from_dir("C:/nikud/model/data/originalDocx")
+CharIdsSingleton(path)
+abuGal = ExtractArabicFromFiles()
+abuGal.collect_from_dir("sources/originalDocx")

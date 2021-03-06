@@ -26,7 +26,7 @@ def do_train(training_inputs, training_labels):
             loss = loss_function(tag_scores, tags)
             loss.backward()
             optimizer.step()
-            print("Loss at epoch %d: %.3f" % (epoch, loss.item()))
+        print("Loss at epoch %d: %.3f" % (epoch, loss.item()))
     torch.save(model, DEFAULT_MODEL_PATH)
 
 

@@ -18,7 +18,10 @@ class SentenceToModelInput:
         word_iter = iter(Word(word))
 
         for chunk in word_iter:
-            idx, label = self.chunk_processor.chunk_to_input_label(chunk)
+            try:
+                idx, label = self.chunk_processor.chunk_to_input_label(chunk)
+            except KeyError:
+                raise ValueError(f"KeyError for word: {word}, at chunk: {chunk}")
             inputs.append(idx)
             labels.append(label)
         return inputs, labels
