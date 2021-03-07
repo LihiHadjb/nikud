@@ -15,7 +15,7 @@ for the input
    
 
 
-## To run the Flask Server: 
+## To run the Flask App: 
 1. cd into the 'web/' folder.
 2. Run the following commands:
 ```
