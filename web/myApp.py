@@ -15,7 +15,11 @@ def home():
     if request.method == "POST":
         input_text = request.form['input']
         input_form.input.data = input_text
-        output_text = get_prediction_for_text(input_text)
+        try:
+            output_text = get_prediction_for_text(input_text)
+        except Exception:
+            render_template('home.html', form=input_form, output=output_text, error="Invalid")
+
         #output_text = "וָאָיְ וָאחִד מֻמְכִּן יִסָאוִיהָא בִּאלְבֵּית"
     return render_template('home.html', form=input_form, output=output_text)
 
@@ -37,3 +41,8 @@ def about():
 @app.route("/intro", methods=['GET'])
 def intro():
     return render_template('intro.html')
+
+# @app.route("/legalChars", methods=['GET'])
+# def legalChars():
+#
+#     return render_template('legalChara.html')
