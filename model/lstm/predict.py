@@ -9,10 +9,6 @@ def predict(inputs, model_path=DEFAULT_MODEL_PATH):
     model = torch.load(model_path)
     model.eval()
     with torch.no_grad():
-        #inputs =
-        #
-        #
-        # torch.tensor([20, 10, 30, 32], dtype=torch.long)
         tag_scores = model(torch.tensor(inputs, dtype=torch.long))
         max_indices = torch.argmax(tag_scores, 1)
     return max_indices

@@ -8,7 +8,7 @@ class ModelInputToSentence:
     def chunk_from_input_label(self, input_idx, label_idx):
 
         #TODO: make this normal!
-        if input_idx == 33:
+        if input_idx == 37:
             return " "
 
         label_char = self.cid.get_idx_to_nikud(label_idx)

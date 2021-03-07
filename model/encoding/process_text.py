@@ -18,9 +18,12 @@ class TextProcessor():
         #TODO: these should come from the config file
         #consider spliting by illegal chars
         #TODO: not splitting by ')', ')', so they will get nikud even though it shouldnt
-        split_by = ['.', ',', '\n', '?', "!"]
+        split_by = ['.', ',', '\n', '?', '!', '"']
         pattern = '|'.join(map(re.escape, split_by))
         raw_sentences = re.split(pattern, text)
+
+        #TODO: make sure nothing important is lost here
+        raw_sentences = [sent for sent in raw_sentences if (len(sent)) > 1]
 
         for sent in raw_sentences:
             inputs, labels = self.sentence_processor.sentence_to_input_and_labels(sent)
