@@ -13,7 +13,6 @@ class ChunkToInputLabel:
         return self.cid.get_num_nikuds()
 
 
-
     def get_nikud_in_chunk(self, chunk):
         result = ""
         for c in chunk:

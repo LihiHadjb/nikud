@@ -1,5 +1,5 @@
 from model.encoding.chunk_to_input_label import ChunkToInputLabel
-from model.encoding.Word import Word
+from model.encoding.word import Word
 
 
 class SentenceToModelInput:

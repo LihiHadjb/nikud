@@ -1,6 +1,6 @@
 import unittest
 from model.CharIdsSingleton import CharIdsSingleton
-from model.encoding.Word import Word
+from model.encoding.word import Word
 from model.encoding.sentence_to_model_input import SentenceToModelInput
 
 
