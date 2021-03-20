@@ -47,7 +47,7 @@ class ExtractArabicFromFiles:
 
     def collect_from_file(self, path):
         file_name = Path(path).stem
-        new_file_path = "C:/nikud/model/data/transcipts/" + file_name + "_arabic.docx"
+        new_file_path = "C:/nikud/model/data/transcipts/" + file_name + "_arabic.txt"
         new_file = open(new_file_path, "w", encoding="utf8")
         text = self.get_text(path)
         for word in text.split():
@@ -62,8 +62,7 @@ class ExtractArabicFromFiles:
             self.collect_from_file(dir_path + "/" + filename)
 
 
-
 path = "../resources/config.xlsx"
 CharIdsSingleton(path)
 abuGal = ExtractArabicFromFiles()
-abuGal.collect_from_dir("sources/originalDocx")
+abuGal.collect_from_dir("sources/חיאת עילתנא/docx")
